@@ -36,27 +36,26 @@ int main()
 
    if (nbKiloTotal <= kiloGratuit)
    {
-      total = locationPrixJour * nbJour + prixEss * (nbKiloTotal * 0.76);
-      std::cout << "Le prix total pour " << nbKiloTotal << " et " << nbJour << " est de: " << total << std::endl;
+      total = (locationPrixJour * nbJour) + prixEss * (nbKiloTotal * 0.76);
+      std::cout << "Le prix total pour " << nbKiloTotal << " klm et " << nbJour << " jours de voyage est de: " << total << std::endl;
    }
    else
    {
-
+      total = (locationPrixJour * nbJour) + prixEss * (nbKiloTotal * 0.76) + 0.05 * (nbKiloTotal - 250);
+      std::cout << "Le prix total pour " << nbKiloTotal << " klm et " << nbJour << " jours de voyage est de: " << total << std::endl;
    }
-
-
-
-
-
-
-
 
    system("pause");
    return 0;
+
    /*
    Plan de test:
 
-   (nom variable):		résultat attendu:					affichage écran:
+   Jour, Klm:		Résultat attendu:					Affichage écran:
+   1,250          301,5                         Le prix total pour 250 klm et 1 jours de voyage est de: 301.5
+   1, 300         355.3                         Le prix total pour 300 klm et 1 jours de voyage est de: 355.3
+   -1, 250        
+
 
    */
 }
