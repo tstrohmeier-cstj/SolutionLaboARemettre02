@@ -19,13 +19,13 @@ int main()
    // Déclaration de nos variables programme:
    const int locationPrixJour = 45;
    const int kiloGratuit = 250;
-   const float consoEssKilo = 7.6; // Conssomation au 100 klm
+   const float consoEssKilo = 0.076; // Conssomation essence au kilomètre
    const float prixEss = 1.35; // Prix au litre
    const float prixKiloExtra = 0.05; 
    int nbJour; // Nombre de jour de voyage de l'usager
    int nbKiloTotal; // Kilométrage de l'usager
-   double prixTotal;
-   double prixKilo;
+   double total;
+
 
    //Le programme demande les informations concernant le nombre de jour du voyage et le nombre de kilomètre
    std::cout << "Veuillez entrer le nombre de jour du voyage. \n";
@@ -36,9 +36,14 @@ int main()
 
    if (nbKiloTotal <= kiloGratuit)
    {
-      
-      std::cout << "Le prix total pour " << nbJour << " jours et " << nbKiloTotal << " est de : " << prixTotal << "$. \n";
+      total = locationPrixJour * nbJour + prixEss * (nbKiloTotal * 0.76);
+      std::cout << "Le prix total pour " << nbKiloTotal << " et " << nbJour << " est de: " << total << std::endl;
    }
+   else
+   {
+
+   }
+
 
 
 
