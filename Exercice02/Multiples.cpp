@@ -15,23 +15,29 @@ int main()
    // Déclaration de nos variables programme:
    int A;
 
-   //	Le programme demande un nombre entier à l'utilisateur.
+   //	Le programme demande un nombre entier à l'utilisateur et le mémorise dans la variable A.
    std::cout << "Veuillez entrer un nombre entier \n";
    std::cin >> A;
 
-   // Le programme test si A est seulement un multiple de 2.
+   // Le programme test si A est un multiple de 2 et 3 grâce à modulo. Si modulo 2 et 3 sont égales à 0, true.
    if (A % 2 == 0 && A % 3 == 0)
    {
       std::cout << "Le nombre " << A << " est à la fois un multiple de 2 et de 3. \n";
    }
+
+   // Le programme test si A est un multiple de 2 grâce à modulo. Si modulo 2 est égales à 0, true.
    else if (A % 2 == 0)
    {
       std::cout << "Le nombre " << A << " est seulement un multiple de 2. \n";
    }
+
+   // Le programme test si A est un multiple de 3 grâce à modulo. Si modulo 3 est égales à 0, true.
    else if (A % 3 == 0)
    {
       std::cout << "Le nombre " << A << " est seulement un multiple de 3. \n";
    } 
+
+   // Si aucune des conditions précédentes n'est remplie, A est ni un multiple de 2, ni un de 3.
    else
    {
       std::cout << "Le nombre " << A << " est ni un multipe de 2, ni de 3. \n";

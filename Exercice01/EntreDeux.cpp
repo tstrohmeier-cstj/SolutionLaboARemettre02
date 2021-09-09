@@ -43,17 +43,25 @@ int main()
       std::cout << "Le nombre " << C << " est compris entre " << B << " et " << A << std::endl;
    }
    else
-   {// (Si C est plus petit que A et C est plus petit que B et A est plus petit que B) OU 
-    // (si C est plus grand que A et C est plus grand que B et A est plus petit que B) affiche un message
+   {
+      // Si C est plus petit que A et C est plus petit que B et A est plus petit que B OU 
+      // si C est plus grand que A et C est plus grand que B et A est plus petit que B, affiche un message :
+
       if (C < A && C < B && A < B || C > A && C > B && A < B)
       {
          std::cout << "Le nombre " << C << " n'est pas compris entre " << A << " et " << B << std::endl;
-      }// (Si C est plus petit que A et C est plus petit que B et A est plus grand que B) OU
-       // (si C est plus grand que A et C est plus grand que B et A est plus grand que B) affiche un message
+      }
+      
+      // Si C est plus petit que A et C est plus petit que B et A est plus grand que B OU
+      // si C est plus grand que A et C est plus grand que B et A est plus grand que B, affiche un message :
+
       else if (C < A && C < B && A > B || C > A && C > B && A > B)
       {
          std::cout << "Le nombre " << C << " n'est pas compris entre " << B << " et " << A << std::endl;
-      }// (Si C est plus petit que A) OU ( C est plus grand que A ) ET A est égal à B, affiche un message
+      }
+
+      // Si C est plus petit que A OU C est plus grand que A  ET A est égal à B, affiche un message :
+
       else if (C < A || C > A && A == B)
       {
          std::cout << "Le nombre " << C << " n'est pas compris entre " << A << " et " << B << std::endl;
@@ -65,7 +73,7 @@ int main()
    return 0;
 
    /*
-   Plan de test: ( On test seulement C dans ce programme )
+   Plan de test: ( Quelques exemple de mes test car j'ai testé facilement 100 fois pour y arriver ahah )
 
    Variables (A,B,C):		Résultat attendu:					Affichage écran:
    1,2,3                   3 pas entre 1 et 2            Le nombre 3 n'est pas compris entre 1 et 2
@@ -77,6 +85,5 @@ int main()
    1,2,1                   1 est entre 1 et 2            Le nombre 1 est compris entre 1 et 2
    0,1,1                   1 est entre 0 et 1            Le nombre 1 est compris entre 0 et 1
    */
-
-   // Note à Karine M = J'ai perdu 2 kilo à réflechir pour trouver comment écrire ce programme :-D 
+ 
 }

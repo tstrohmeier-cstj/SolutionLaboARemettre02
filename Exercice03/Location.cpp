@@ -17,11 +17,11 @@ int main()
    setlocale(LC_ALL, "");
 
    // Déclaration de nos variables programme:
-   const int locationPrixJour = 45;
-   const int kiloGratuit = 250;
+   const int locationPrixJour = 45; // Prix par jour de base
+   const int kiloGratuit = 250; // Klm gratuit par jour
    const float consoEssKilo = 0.076; // Conssomation essence au kilomètre
    const float prixEss = 1.35; // Prix au litre
-   const float prixKiloExtra = 0.05; 
+   const float prixKiloExtra = 0.05; // Prix du klm extra apres 250 klm gratuit par jour
    int nbJour; // Nombre de jour de voyage de l'usager
    int nbKiloTotal; // Kilométrage de l'usager
    double total;
@@ -34,15 +34,16 @@ int main()
    std::cout << "Veuillez entrer la distance en kilométrage. \n";
    std::cin >> nbKiloTotal;
 
-   if (nbKiloTotal <= kiloGratuit)
+   if (nbKiloTotal > nbJour * kiloGratuit)
    {
-      total = (locationPrixJour * nbJour) + prixEss * (nbKiloTotal * 0.76);
-      std::cout << "Le prix total pour " << nbKiloTotal << " klm et " << nbJour << " jours de voyage est de: " << total << std::endl;
+      total = nbKiloTotal - (nbJour * kiloGratuit);
+      total = prixEss * (nbKiloTotal * consoEssKilo) + (prixKiloExtra * total) + (nbJour * locationPrixJour);
+      std::cout << "Pour " << nbJour << " jours de location et " << nbKiloTotal << " klm, vous devez débourser: " << total << "$. \n";
    }
-   else
+   else if (nbKiloTotal <= nbJour * kiloGratuit)
    {
-      total = (locationPrixJour * nbJour) + prixEss * (nbKiloTotal * 0.76) + 0.05 * (nbKiloTotal - 250);
-      std::cout << "Le prix total pour " << nbKiloTotal << " klm et " << nbJour << " jours de voyage est de: " << total << std::endl;
+      total = prixEss * (nbKiloTotal * consoEssKilo) + (nbJour * locationPrixJour);
+      std::cout << "Pour " << nbJour << " jours de location et " << nbKiloTotal << " klm, vous devez débourser: " << total << "$. \n";
    }
 
    system("pause");
@@ -52,10 +53,10 @@ int main()
    Plan de test:
 
    Jour, Klm:		Résultat attendu:					Affichage écran:
-   1,250          301,5                         Le prix total pour 250 klm et 1 jours de voyage est de: 301.5
-   1, 300         355.3                         Le prix total pour 300 klm et 1 jours de voyage est de: 355.3
-   -1, 250        
-
-
+   2,600           156.56                       Pour 2 jours de location et 600 klm, vous devez débourser: 156.56$.
+   2,500           141.3                        Pour 2 jours de location et 500 klm, vous devez débourser: 141.3$.
+   -1, 200         erreur                       erreur
    */
 }
+
+// KM Je n'ai pas établie de regle si les valeurs donné par l'utilisateur sont 0 ou négative
