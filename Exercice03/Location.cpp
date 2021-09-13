@@ -17,14 +17,16 @@ int main()
    setlocale(LC_ALL, "");
 
    // Déclaration de nos variables programme:
-   const int locationPrixJour = 45; // Prix par jour de base
-   const int kiloGratuit = 250; // Klm gratuit par jour
-   const float consoEssKilo = 0.076; // Conssomation essence au kilomètre
-   const float prixEss = 1.35; // Prix au litre
-   const float prixKiloExtra = 0.05; // Prix du klm extra apres 250 klm gratuit par jour
-   int nbJour; // Nombre de jour de voyage de l'usager
-   int nbKiloTotal; // Kilométrage de l'usager
+
+   const int locationPrixJour =     45;      // Prix par jour de base
+   const int kiloGratuit      =     250;     // Klm gratuit par jour
+   const float consoEssKilo   =     0.076;   // Conssomation essence au kilomètre
+   const float prixEss        =     1.35;    // Prix au litre
+   const float prixKiloExtra  =     0.05;    // Prix du klm extra apres 250 klm gratuit par jour
+   int nbJour;                               // Nombre de jour de voyage de l'usager
+   int nbKiloTotal;                          // Kilométrage de l'usager
    double total;
+
 
 
    //Le programme demande les informations concernant le nombre de jour du voyage et le nombre de kilomètre
@@ -34,19 +36,28 @@ int main()
    std::cout << "Veuillez entrer la distance en kilométrage. \n";
    std::cin >> nbKiloTotal;
 
-   if (nbKiloTotal > nbJour * kiloGratuit)
+
+   if (nbJour > 0)
    {
-      total = nbKiloTotal - (nbJour * kiloGratuit);
-      total = prixEss * (nbKiloTotal * consoEssKilo) + (prixKiloExtra * total) + (nbJour * locationPrixJour);
-      std::cout << "Pour " << nbJour << " jours de location et " << nbKiloTotal << " klm, vous devez débourser: " << total << "$. \n";
+      if (nbKiloTotal > nbJour * kiloGratuit)
+      {
+         total = nbKiloTotal - (nbJour * kiloGratuit);
+         total = prixEss * (nbKiloTotal * consoEssKilo) + (prixKiloExtra * total) + (nbJour * locationPrixJour);
+         std::cout << "Pour " << nbJour << " jours de location et " << nbKiloTotal << " klm, vous devez débourser: " << total << "$. \n";
+      }
+      else if (nbKiloTotal <= nbJour * kiloGratuit)
+      {
+         total = prixEss * (nbKiloTotal * consoEssKilo) + (nbJour * locationPrixJour);
+         std::cout << "Pour " << nbJour << " jours de location et " << nbKiloTotal << " klm, vous devez débourser: " << total << "$. \n";
+      }
    }
-   else if (nbKiloTotal <= nbJour * kiloGratuit)
+   else
    {
-      total = prixEss * (nbKiloTotal * consoEssKilo) + (nbJour * locationPrixJour);
-      std::cout << "Pour " << nbJour << " jours de location et " << nbKiloTotal << " klm, vous devez débourser: " << total << "$. \n";
+      std::cout << "Le nombre de jours de location doit être supérieur à 0" << std::endl;
    }
 
    system("pause");
+
    return 0;
 
    /*
@@ -56,6 +67,7 @@ int main()
    2,600           156.56                       Pour 2 jours de location et 600 klm, vous devez débourser: 156.56$.
    2,500           141.3                        Pour 2 jours de location et 500 klm, vous devez débourser: 141.3$.
    -1, 200         erreur                       erreur
+   0              0                    
    */
 }
 
